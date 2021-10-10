@@ -4,7 +4,7 @@ namespace Domain.Tasks
 {
     interface ITask : IEntity
     {
-        string title { get; set; }
-        bool isDone { get; set; }
+        string Title { get; set; }
+        bool IsDone { get; set; }
     }
 }
