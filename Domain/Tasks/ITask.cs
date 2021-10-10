@@ -2,7 +2,7 @@
 
 namespace Domain.Tasks
 {
-    interface ITask : IEntity
+    public interface ITask : IEntity
     {
         string Title { get; set; }
         bool IsDone { get; set; }
