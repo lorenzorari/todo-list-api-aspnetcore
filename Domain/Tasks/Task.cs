@@ -2,9 +2,9 @@
 {
     class Task : ITask
     {
-        public string title { get; set; }
-        public bool isDone { get; set; }
         public int Id { get; set; }
+        public string Title { get; set; }
+        public bool IsDone { get; set; }
 
         public Task() { }
     }
