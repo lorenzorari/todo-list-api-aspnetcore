@@ -16,5 +16,11 @@ namespace WebAPI.Controllers
         {
             return Ok(_taskRepository.GetTasks());
         }
+
+        [HttpPost]
+        public ActionResult<ITask> Create([FromBody] Task task)
+        {
+            return Ok(_taskRepository.Create(task));
+        }
     }
 }
