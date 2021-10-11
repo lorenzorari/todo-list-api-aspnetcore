@@ -14,5 +14,16 @@
             OUTPUT INSERTED.{ColumnId}
             VALUES (@{ColumnTitle}, @{ColumnIsDone})
         ";
+
+        public static readonly string ReqDelete = $@"
+            DELETE FROM {TableName} WHERE {ColumnId} = @{ColumnId}
+        ";
+
+        public static readonly string ReqUpdate = $@"
+            UPDATE {TableName}
+            SET {ColumnTitle}  = @{ColumnTitle},
+                {ColumnIsDone} = @{ColumnIsDone}
+            WHERE {ColumnId} = @{ColumnId}
+        ";
     }
 }
