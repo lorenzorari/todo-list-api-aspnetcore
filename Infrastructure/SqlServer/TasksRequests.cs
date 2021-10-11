@@ -7,7 +7,7 @@
         public static readonly string ColumnTitle = "title";
         public static readonly string ColumnIsDone = "is_done";
 
-        public static readonly string ReqQuery = $"SELECT * FROM {TableName}";
+        public static readonly string ReqGetTasks = $"SELECT * FROM {TableName}";
 
         public static readonly string ReqCreate = $@"
             INSERT INTO {TableName} ({ColumnTitle}, {ColumnIsDone})
