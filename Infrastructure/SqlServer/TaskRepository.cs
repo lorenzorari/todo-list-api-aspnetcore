@@ -46,9 +46,16 @@ namespace Infrastructure.SqlServer
             return task;
         }
 
-        public bool Delete(int id, ITask task)
+        public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            using var sqlConnection = Database.GetConnection();
+            sqlConnection.Open();
+
+            var command = sqlConnection.CreateCommand();
+            command.CommandText = TasksRequests.ReqDelete;
+            command.Parameters.AddWithValue($"@{TasksRequests.ColumnId}", id);
+
+            return 0 < command.ExecuteNonQuery();
         }
 
         public bool Update(int id, ITask task)
