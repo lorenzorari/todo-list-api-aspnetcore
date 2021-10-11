@@ -7,6 +7,6 @@ namespace Domain.Tasks
         IEnumerable<ITask> GetTasks();
         ITask Create(ITask task);
         bool Update(int id, ITask task);
-        bool Delete(int id, ITask task);
+        bool Delete(int id);
     }
 }
