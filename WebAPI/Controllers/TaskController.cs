@@ -23,5 +23,14 @@ namespace WebAPI.Controllers
         {
             return Ok(_taskRepository.Create(task));
         }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public ActionResult Delete(int id)
+        {
+            if (_taskRepository.Delete(id)) return Ok();
+
+            return NotFound();
+        }
     }
 }
