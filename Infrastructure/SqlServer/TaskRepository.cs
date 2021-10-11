@@ -60,7 +60,17 @@ namespace Infrastructure.SqlServer
 
         public bool Update(int id, ITask task)
         {
-            throw new System.NotImplementedException();
+            using var sqlConnection = Database.GetConnection();
+            sqlConnection.Open();
+
+            var command = sqlConnection.CreateCommand();
+            command.CommandText = TasksRequests.ReqUpdate;
+
+            command.Parameters.AddWithValue($"@{TasksRequests.ColumnId}", id);
+            command.Parameters.AddWithValue($"@{TasksRequests.ColumnTitle}", task.Title);
+            command.Parameters.AddWithValue($"@{TasksRequests.ColumnIsDone}", task.IsDone);
+
+            return 0 < command.ExecuteNonQuery();
         }
     }
 }
