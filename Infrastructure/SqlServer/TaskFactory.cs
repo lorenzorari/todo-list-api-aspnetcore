@@ -9,9 +9,9 @@ namespace Infrastructure.SqlServer
         {
             return new Task
             {
-                Id = reader.GetInt32(reader.GetOrdinal("id")),
-                Title = reader.GetString(reader.GetOrdinal("title")),
-                IsDone = reader.GetBoolean(reader.GetOrdinal("is_done"))
+                Id = reader.GetInt32(reader.GetOrdinal(TasksRequests.ColumnId)),
+                Title = reader.GetString(reader.GetOrdinal(TasksRequests.ColumnTitle)),
+                IsDone = reader.GetBoolean(reader.GetOrdinal(TasksRequests.ColumnIsDone))
             };
         }
     }
