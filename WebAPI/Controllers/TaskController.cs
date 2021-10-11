@@ -2,6 +2,7 @@
 using Infrastructure.SqlServer;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WebAPI.Controllers
 {
@@ -14,7 +15,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<ITask>> GetTasks()
         {
-            return Ok(_taskRepository.GetTasks());
+            return Ok(_taskRepository.GetTasks().Cast<Task>());
         }
 
         [HttpPost]
