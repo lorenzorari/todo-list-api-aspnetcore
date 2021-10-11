@@ -11,7 +11,7 @@ namespace Infrastructure.SqlServer
         public IEnumerable<ITask> GetTasks()
         {
             IList<ITask> tasks = new List<ITask>();
-            
+
             using (var sqlConnection = Database.GetConnection())
             {
                 sqlConnection.Open();
@@ -31,7 +31,19 @@ namespace Infrastructure.SqlServer
 
         public ITask Create(ITask task)
         {
-            throw new System.NotImplementedException();
+            using (var sqlConnection = Database.GetConnection())
+            {
+                sqlConnection.Open();
+                var command = sqlConnection.CreateCommand();
+                command.CommandText = TasksRequests.ReqCreate;
+
+                command.Parameters.AddWithValue($"@{TasksRequests.ColumnTitle}", task.Title);
+                command.Parameters.AddWithValue($"@{TasksRequests.ColumnIsDone}", task.IsDone);
+
+                task.Id = (int) command.ExecuteScalar();
+            }
+
+            return task;
         }
 
         public bool Delete(int id, ITask task)
