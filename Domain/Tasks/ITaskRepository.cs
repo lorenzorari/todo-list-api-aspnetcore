@@ -2,7 +2,7 @@
 
 namespace Domain.Tasks
 {
-    interface ITaskRepository
+    public interface ITaskRepository
     {
         IEnumerable<ITask> Query();
         ITask Create(ITask task);
