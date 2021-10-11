@@ -32,5 +32,14 @@ namespace WebAPI.Controllers
 
             return NotFound();
         }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public ActionResult Update(int id, [FromBody] Task task)
+        {
+            if (_taskRepository.Update(id, task)) return Ok();
+
+            return NotFound();
+        }
     }
 }
